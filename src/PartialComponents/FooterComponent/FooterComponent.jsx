@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../../_actions';
-// import styles from './FooterComponent.module.css';
+import styles from './FooterComponent.module.css';
 
 function FooterComponent() {
     const users = useSelector(state => state.users);
