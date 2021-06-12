@@ -8,7 +8,7 @@ class CalendarComponent extends React.Component {
   state = {
     showCalendarTable: true,
     showMonthTable: false,
-    dateObject: moment(),
+    dateObject: moment(this.props.currentDate),
     allmonths: moment.months(),
     showYearNav: false,
     selectedDay: null,
@@ -52,7 +52,7 @@ class CalendarComponent extends React.Component {
       months.push(
         <td
           key={data}
-          className={styles.calendar-month}
+          className={styles.calendar - month}
           onClick={(e) => {
             this.setMonth(data);
           }}
@@ -79,7 +79,7 @@ class CalendarComponent extends React.Component {
     });
 
     return (
-      <table className={styles.calendar-month}>
+      <table className={styles.calendar - month}>
         <thead>
           <tr>
             <th colSpan="4">Select a Month</th>
@@ -152,7 +152,7 @@ class CalendarComponent extends React.Component {
       months.push(
         <td
           key={data}
-          className={styles.calendar-month}
+          className={styles.calendar - month}
           onClick={(e) => {
             this.setYear(data);
           }}
@@ -179,7 +179,7 @@ class CalendarComponent extends React.Component {
     });
 
     return (
-      <table className={styles.calendar-month}>
+      <table className={styles.calendar - month}>
         <thead>
           <tr>
             <th colSpan="4">Select a Yeah</th>
@@ -190,6 +190,7 @@ class CalendarComponent extends React.Component {
     );
   };
   onDayClick = (e, d) => {
+    this.props.calDateClick(d);
     this.setState(
       {
         selectedDay: d,
@@ -214,24 +215,24 @@ class CalendarComponent extends React.Component {
       let currentDay = d == this.currentDay() ? "today" : "";
       // let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
       daysInMonth.push(
-        <td key={d} className={styles[currentDay]}>
-          <span
-            onClick={(e) => {
-              this.onDayClick(e, d);
-            }}
-          >
-            {d}
-          </span>
+        <td
+          key={d}
+          className={styles[currentDay]}
+          onClick={(e) => {
+            this.onDayClick(e, d);
+          }}
+        >
+          <span>{d}</span>
           <span className={styles.workHour}>7.5</span>
         </td>
       );
       calenderBoxCount++;
     }
-    let blanks2 = []
+    let blanks2 = [];
     for (let i = calenderBoxCount; i < 35; i++) {
-        blanks2.push(<td className={styles.empty}>{""}</td>);
-        calenderBoxCount++;
-      }
+      blanks2.push(<td className={styles.empty}>{""}</td>);
+      calenderBoxCount++;
+    }
     var totalSlots = [...blanks, ...daysInMonth, ...blanks2];
     let rows = [];
     let cells = [];
@@ -311,4 +312,4 @@ class CalendarComponent extends React.Component {
   }
 }
 
-export {CalendarComponent};
+export { CalendarComponent };

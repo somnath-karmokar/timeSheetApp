@@ -5,9 +5,13 @@
 
 .projectList {
     display: inline-block;
-    position: absolute;
-    top: 124px;
-    right: 23%;
+    width: 35%;
+    margin: 15px;
+    vertical-align: top;
+}
+
+.projectList2 {
+    display: none;
 }
 
 .projectList table,
@@ -17,4 +21,9 @@
 
 .projectList table input[type="text"] {
     border: none;
+}
+
+.calendarContainer {
+    display: inline-block;
+    width: 60%;
 }
