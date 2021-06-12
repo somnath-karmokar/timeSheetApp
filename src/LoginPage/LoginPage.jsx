@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../_actions';
+import styles from './LoginPage.module.css';
 
 function LoginPage() {
     const [inputs, setInputs] = useState({
@@ -31,13 +32,13 @@ function LoginPage() {
         setSubmitted(true);
         if (username && password) {
             // get return url from location state or default to home page
-            const { from } = location.state || { from: { pathname: "/" } };
+            const { from } = location.state || { from: { pathname: "/profile" } };
             dispatch(userActions.login(username, password, from));
         }
     }
 
     return (
-        <div className="col-lg-8 offset-lg-2">
+        <div className={styles.container}>
             <h2>Login</h2>
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">

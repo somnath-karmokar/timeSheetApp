@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../_actions';
+import styles from './RegisterPage.module.css';
 
 function RegisterPage() {
     const [user, setUser] = useState({
@@ -35,7 +36,7 @@ function RegisterPage() {
     }
 
     return (
-        <div className="col-lg-8 offset-lg-2">
+        <div className={styles.container}>
             <h2>Register</h2>
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">

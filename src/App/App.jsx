@@ -6,6 +6,7 @@ import { HeaderComponent } from "../PartialComponents/HeaderComponent";
 import { FooterComponent } from "../PartialComponents/FooterComponent";
 import { Router } from "react-router-dom";
 import { history } from "../_helpers";
+import styles from "./App.module.css";
 
 function App() {
   const alert = useSelector((state) => state.alert);
@@ -19,14 +20,12 @@ function App() {
   }, []);
 
   return (
-    <div className="jumbotron">
-      <div className="container">
-        <Router history={history}>
-          <HeaderComponent />
-          <Routes />
-          <FooterComponent />
-        </Router>
-      </div>
+    <div className={styles.wrapper}>
+      <Router history={history}>
+        <HeaderComponent />
+        <Routes />
+        <FooterComponent />
+      </Router>
     </div>
   );
 }

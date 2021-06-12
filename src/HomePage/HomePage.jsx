@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { userActions } from '../_actions';
 import { LeftComponent } from "../PartialComponents/LeftComponent";
+import { HeaderComponent } from "../PartialComponents/HeaderComponent";
 
 function HomePage() {
+    
     const users = useSelector(state => state.users);
     const user = useSelector(state => state.authentication.user);
     const dispatch = useDispatch();
@@ -20,9 +22,10 @@ function HomePage() {
 
     return (
         <div className="col-lg-8 offset-lg-2">
+          {/* <HeaderComponent /> */}
             <LeftComponent />
             <h1>Hi {user.firstName}!</h1>
-            <p>You're logged in with React Hooks!!</p>
+            
             <h3>All registered users:</h3>
             {users.loading && <em>Loading users...</em>}
             {users.error && <span className="text-danger">ERROR: {users.error}</span>}
@@ -43,6 +46,12 @@ function HomePage() {
             <p>
                 <Link to="/login">Logout</Link>
             </p>
+            <h3>Valentina Petrillo could this year become the first openly transgender woman to compete at the Paralympics. For the visually impaired Italian, selection for the national squad would be a dream come true - but she says she understands why other athletes may have doubts and questions about racing against her.
+
+"I'm happy as a woman and running as a woman is all I want. I couldn't ask for more," says Valentina Petrillo.
+
+"I've got a  
+the Blind. Here she took up sport again, becoming a member of Italy's national five-a-side football team for people with sight loss.</h3>
         </div>
     );
 }

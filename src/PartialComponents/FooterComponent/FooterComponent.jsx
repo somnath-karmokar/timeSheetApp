@@ -12,7 +12,16 @@ function FooterComponent() {
 
        
 
-    return <h1>Footer</h1>;
+    return (
+       
+        <div className={styles.navbar}>
+            
+            <div class={styles.middle}><p><small>&copy; Copyright 2021, The Co-operative Group </small></p> </div>
+            <a href="/login" className={styles.right}></a>
+    
+        </div>
+    
+    );
 }
 
 export { FooterComponent };
