@@ -6,6 +6,7 @@ import { userActions } from "../_actions";
 import { LeftComponent } from "../PartialComponents/LeftComponent";
 import { HeaderComponent } from "../PartialComponents/HeaderComponent";
 import { CalendarComponent } from "../PartialComponents/CalendarComponent";
+import { isInteger, isFloat } from "../_helpers";
 import styles from "./ProfilePage.module.css";
 
 function ProfilePage() {
@@ -14,6 +15,7 @@ function ProfilePage() {
   const dispatch = useDispatch();
   const [projeectShow, setProjctShow] = useState(false);
   const [projectList, setProjectList] = useState(null);
+  const [totalEntry, setTotalEntry] = useState(0);
   const formRef = useRef();
 
   const projectListData = [
@@ -36,7 +38,9 @@ function ProfilePage() {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setTimeEntry((timeEntry) => ({ ...timeEntry, [name]: Number(value) }));
+    if (!isNaN(value))
+      setTimeEntry((timeEntry) => ({ ...timeEntry, [name]: Number(value) }));
+    else e.target.value = "";
   }
 
   function createProjectList() {
@@ -60,7 +64,10 @@ function ProfilePage() {
     dispatch(userActions.getAll());
   }, []);
 
-  
+  useEffect(() => {
+    const total = Object.values(timeEntry).reduce((t, value) => t + value, 0);
+    setTotalEntry(isFloat(total) ? total.toFixed(2) : total);
+  }, [timeEntry]);
 
   function calDateClick(day) {
     setProjctShow(true);
@@ -80,6 +87,7 @@ function ProfilePage() {
       </div>
 
       <div className={projeectShow ? styles.projectList : styles.projectList2}>
+        <h2>Projects</h2>
         <form ref={formRef}>
           <table>
             <tbody>
@@ -87,7 +95,7 @@ function ProfilePage() {
               <tr>
                 <td>Total</td>
                 <td>
-                  <input type="text" />
+                  <input type="text" value={totalEntry} readOnly={true} />
                 </td>
               </tr>
             </tbody>

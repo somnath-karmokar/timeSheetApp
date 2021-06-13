@@ -47,7 +47,7 @@
     display: table;
     border-spacing: 0;
     border-collapse: separate;
-    background-color: #cd283c;
+    background-color: #315498;
     border-radius: 3px 3px 0 0;
     -webkit-border-radius: 3px 3px 0 0;
 }
@@ -74,7 +74,7 @@
 }
 
 .tailDatetimeCalendar .calendarNavi span:hover {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: #315498;
 }
 
 .tailDatetimeCalendar .calendarNavi span.buttonPrev {
@@ -118,16 +118,17 @@
 
 .tailDatetimeCalendar .calendarDate table thead tr>*,
 .tailDatetimeCalendar .calendarDate table tbody tr>* {
-    color: #ffffff;
     width: 35px;
     height: 35px;
     padding: 0;
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     font-weight: normal;
     line-height: 35px;
-    border: 0;
-    background-color: #223344;
+    color: #000;
+    font-weight: bold;
+    background-color: #DBE0F3;
+    border: 1px solid #315498;
 }
 
 .tailDatetimeCalendar .calendarDate table tbody tr>* {
@@ -136,7 +137,7 @@
     position: relative;
     font-size: 14px;
     background-color: #ffffff;
-    border: 1px solid blue;
+    border: 1px solid #315498;
 }
 
 .tailDatetimeCalendar .calendarDate table tbody tr>*>span {
