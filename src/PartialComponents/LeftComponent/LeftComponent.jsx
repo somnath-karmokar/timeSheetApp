@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,38 +9,46 @@ function LeftComponent() {
   const users = useSelector((state) => state.users);
   const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
+  const [selectedMenu, setSelectedMenu] = useState("Profile");
+  const [menuList, setMenuList] = useState(null);
+  const menuListData = [
+    { title: "Profile", image: "/Public/Images/img1.jpeg", link: "/profile" },
+    { title: "Admin", image: "/Public/Images/img2.jpeg", link: "/" },
+  ];
+  function menuClick(menu) {
+    setSelectedMenu(menu);
+  }
 
-  return (
-    <div class={styles.sidenav}>
-      <Link to="/profile">
-        {" "}
-        <img
-          src={"/Public/Images/img1.jpeg"}
-          alt="img1"
-          border="0"
-          height="100px"
-        />
-        <span>
-          <img
-            src={"/Public/Images/arrow.png"}
-            alt="img1"
-            border="0"
-            height="100px"
-          />
+  function createMenu() {
+    let menuListObj = menuListData.map((menu) => (
+      <Link onClick={(e) => menuClick(menu.title)} to={menu.link}>
+        <span key={menu.title} className={styles.icon}>
+          <img src={menu.image} alt={menu.title} border="0" height="100px" />
         </span>
+        {menu.title === selectedMenu && (
+          <span className={styles.arrow}>
+            <img
+              src={"/Public/Images/arrow.png"}
+              alt="img1"
+              border="0"
+              height="100px"
+            />
+          </span>
+        )}
       </Link>
-      <Link to="/admin">
-        {" "}
-        <img
-          src={"/Public/Images/img2.jpeg"}
-          alt="img2"
-          border="0"
-          height="100px"
-        />{" "}
-      </Link>
-      <div className={styles.dot}></div>
-    </div>
-  );
+    ));
+    setMenuList(menuListObj);
+  }
+
+  useEffect(() => {
+    createMenu();
+  }, []);
+
+  useEffect(() => {
+    createMenu();
+  }, [selectedMenu]);
+
+  return <div class={styles.sidenav}>{menuList}</div>;
 }
 
 export { LeftComponent };

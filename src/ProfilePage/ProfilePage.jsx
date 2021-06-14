@@ -66,7 +66,7 @@ function ProfilePage() {
 
   useEffect(() => {
     const total = Object.values(timeEntry).reduce((t, value) => t + value, 0);
-    setTotalEntry(isFloat(total) ? total.toFixed(2) : total);
+    setTotalEntry(isFloat(total) ? total.toFixed(1) : total);
   }, [timeEntry]);
 
   function calDateClick(day) {

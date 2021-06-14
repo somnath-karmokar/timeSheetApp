@@ -313,5 +313,25 @@
     display: block;
 }
 
+.selectedDay {
+    color: #cd283c !important;
+    border-color: #325397 !important;
+}
+
+.selectedDay:after {
+    top: 3px;
+    left: 29%;
+    width: 29px;
+    height: 29px;
+    content: "";
+    display: block;
+    position: absolute;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #cd283c !important;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
 
 /* @end tail.DateTime */

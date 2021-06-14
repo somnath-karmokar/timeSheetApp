@@ -10,7 +10,7 @@ body {
     top: 80px;
     left: 0px;
     background: #00B1E7;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .sidenav a,
@@ -64,11 +64,22 @@ img {
     padding: 0px 10px;
 }
 
-span img {
+.arrow {
+    position: relative;
+}
+
+.arrow img {
     position: absolute;
-    top: 3px;
-    left: 53px;
+    display: inline-block;
+    top: -9px;
+    left: -9px;
+    height: 49px;
+    width: auto;
     z-index: 9999;
+}
+
+.icon img {
+    display: inline-block;
 }
 
 @media screen and (max-height: 450px) {

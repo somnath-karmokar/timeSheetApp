@@ -213,11 +213,11 @@ class CalendarComponent extends React.Component {
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
       let currentDay = d == this.currentDay() ? "today" : "";
-      // let selectedClass = (d == this.state.selectedDay ? " selected-day " : "")
+      let selectedClass = d == this.state.selectedDay ? "selectedDay" : "";
       daysInMonth.push(
         <td
           key={d}
-          className={styles[currentDay]}
+          className={`${styles[currentDay]} ${styles[selectedClass]}`}
           onClick={(e) => {
             this.onDayClick(e, d);
           }}
