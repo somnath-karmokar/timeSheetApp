@@ -13,7 +13,7 @@ function LeftComponent() {
   const [menuList, setMenuList] = useState(null);
   const menuListData = [
     { title: "Profile", image: "/Public/Images/img1.jpeg", link: "/profile" },
-    { title: "Admin", image: "/Public/Images/img2.jpeg", link: "/" },
+    { title: "Admin", image: "/Public/Images/img2.jpeg", link: "/admin" },
   ];
   function menuClick(menu) {
     setSelectedMenu(menu);
